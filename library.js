@@ -7,10 +7,19 @@ function Book(title, author, pages, readStatus) {
   this.readStatus = readStatus;
 }
 
+const bookSection = document.getElementById('bookSection');
+const showBooks = (bookCard) => {
+  bookSection.innerHTML = '';
+  myLibrary.forEach((newBook) => {
+    const newBookCard = bookCard(newBook);
+    bookSection.appendChild(newBookCard);
+  });
+};
+
 // event: add a book
 document.querySelector("#book-form").addEventListener("submit", (event) => {
   event.preventDefault();
-  //   alert("Hello");
+
   //get form values
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
