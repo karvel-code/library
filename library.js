@@ -8,7 +8,7 @@ function Book(title, author, pages, readStatus) {
 }
 
 const bookSection = document.getElementById("bookSection");
-const showBooks = (bookCard) => {
+const displayBooks = (bookCard) => {
   bookSection.innerHTML = "";
   myLibrary.forEach((newBook) => {
     const newBookCard = bookCard(newBook);
@@ -16,18 +16,18 @@ const showBooks = (bookCard) => {
   });
 };
 
-function readstatus(index, showBooks, bookCard) {
+function readstatus(index, displayBooks, bookCard) {
   if (myLibrary[index].readStatus === false) {
     myLibrary[index].readStatus = true;
   } else {
     myLibrary[index].readStatus = false;
   }
-  showBooks(bookCard);
+  displayBooks(bookCard);
 }
 
-function removeFromLib(index, showBooks, bookCard) {
+function removeFromLib(index, displayBooks, bookCard) {
   myLibrary.splice(index, 1);
-  showBooks(bookCard);
+  displayBooks(bookCard);
 }
 
 const bookCard = (newBook) => {
@@ -46,10 +46,10 @@ const bookCard = (newBook) => {
   readStatus.innerHTML = "Toggle read status";
   div.append(title, author, pages, read, remove, readStatus);
   remove.addEventListener("click", () =>
-    removeFromLib(myLibrary.indexOf(newBook), showBooks, bookCard)
+    removeFromLib(myLibrary.indexOf(newBook), displayBooks, bookCard)
   );
   readStatus.addEventListener("click", () =>
-    readstatus(myLibrary.indexOf(newBook), showBooks, bookCard)
+    readstatus(myLibrary.indexOf(newBook), displayBooks, bookCard)
   );
   div.className = "card";
   return div;
@@ -70,3 +70,8 @@ document.querySelector("#book-form").addEventListener("submit", (event) => {
   myLibrary.push(book);
   console.log(book);
 });
+
+const inputForm = document.getElementById("book-form");
+inputForm.addEventListener("submit", (event) =>
+  addBookToLibrary(event, bookCard)
+);
