@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Library</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="library.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Book Library</h1>
+      <form id="book-form">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" id="author" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="pages">No of Pages</label>
+          <input type="text" id="pages" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="isRead">Already read?</label><br />
+          <input type="radio" id="isRead" name="yes/no" value="" /> Yes
+          <input type="radio" id="isRead" name="yes/no" value="" />
+          No<br /><br />
+        </div>
+        <input
+          type="submit"
+          value="Add Book"
+          class="btn btn-primary btn-block"
+        />
+      </form>
+    </div>
+    <section id="bookSection"></section>
+    <script src="library.js"></script>
+  </body>
+</html>
