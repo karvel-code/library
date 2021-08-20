@@ -7,14 +7,23 @@ function Book(title, author, pages, readStatus) {
   this.readStatus = readStatus;
 }
 
-const bookSection = document.getElementById('bookSection');
+const bookSection = document.getElementById("bookSection");
 const showBooks = (bookCard) => {
-  bookSection.innerHTML = '';
+  bookSection.innerHTML = "";
   myLibrary.forEach((newBook) => {
     const newBookCard = bookCard(newBook);
     bookSection.appendChild(newBookCard);
   });
 };
+
+function readstatus(index, showBooks, bookCard) {
+  if (myLibrary[index].readStatus === false) {
+    myLibrary[index].readStatus = true;
+  } else {
+    myLibrary[index].readStatus = false;
+  }
+  showBooks(bookCard);
+}
 
 function removeFromLib(index, showBooks, bookCard) {
   myLibrary.splice(index, 1);
@@ -22,23 +31,27 @@ function removeFromLib(index, showBooks, bookCard) {
 }
 
 const bookCard = (newBook) => {
-  const div = document.createElement('div');
-  const title = document.createElement('p');
+  const div = document.createElement("div");
+  const title = document.createElement("p");
   title.textContent = `Book title: ${newBook.title}`;
-  const author = document.createElement('p');
+  const author = document.createElement("p");
   author.textContent = `Author: ${newBook.author}`;
-  const pages = document.createElement('p');
+  const pages = document.createElement("p");
   pages.textContent = `Pages: ${newBook.pages}`;
-  const read = document.createElement('p');
+  const read = document.createElement("p");
   read.textContent = `Read?: ${newBook.readStatus}`;
-  const remove = document.createElement('button');
-  remove.innerHTML = 'Eject Book';
-  const readStatus = document.createElement('button');
-  readStatus.innerHTML = 'Toggle read status';
+  const remove = document.createElement("button");
+  remove.innerHTML = "Eject Book";
+  const readStatus = document.createElement("button");
+  readStatus.innerHTML = "Toggle read status";
   div.append(title, author, pages, read, remove, readStatus);
-  remove.addEventListener('click', () => removeFromLib(myLibrary.indexOf(newBook), showBooks, bookCard));
-  readStatus.addEventListener('click', () => readstatus(myLibrary.indexOf(newBook), showBooks, bookCard));
-  div.className = 'card';
+  remove.addEventListener("click", () =>
+    removeFromLib(myLibrary.indexOf(newBook), showBooks, bookCard)
+  );
+  readStatus.addEventListener("click", () =>
+    readstatus(myLibrary.indexOf(newBook), showBooks, bookCard)
+  );
+  div.className = "card";
   return div;
 };
 
