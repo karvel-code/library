@@ -63,15 +63,15 @@ document.querySelector("#book-form").addEventListener("submit", (event) => {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
-  const isRead = document.querySelector("#isRead").value;
+  const readStatus = document.querySelector("#isRead").checked;
 
   //instantiate a book
-  const book = new Book(title, author, pages, isRead);
+  const book = new Book(title, author, pages, readStatus);
   myLibrary.push(book);
   console.log(book);
 });
 
-const inputForm = document.getElementById("book-form");
-inputForm.addEventListener("submit", (event) =>
-  addBookToLibrary(event, bookCard)
-);
+// const inputForm = document.getElementById("book-form");
+// inputForm.addEventListener("submit", (event) =>
+//   addBookToLibrary(event, bookCard)
+// );
