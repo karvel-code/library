@@ -16,6 +16,32 @@ const showBooks = (bookCard) => {
   });
 };
 
+function removeFromLib(index, showBooks, bookCard) {
+  myLibrary.splice(index, 1);
+  showBooks(bookCard);
+}
+
+const bookCard = (newBook) => {
+  const div = document.createElement('div');
+  const title = document.createElement('p');
+  title.textContent = `Book title: ${newBook.title}`;
+  const author = document.createElement('p');
+  author.textContent = `Author: ${newBook.author}`;
+  const pages = document.createElement('p');
+  pages.textContent = `Pages: ${newBook.pages}`;
+  const read = document.createElement('p');
+  read.textContent = `Read?: ${newBook.readStatus}`;
+  const remove = document.createElement('button');
+  remove.innerHTML = 'Eject Book';
+  const readStatus = document.createElement('button');
+  readStatus.innerHTML = 'Toggle read status';
+  div.append(title, author, pages, read, remove, readStatus);
+  remove.addEventListener('click', () => removeFromLib(myLibrary.indexOf(newBook), showBooks, bookCard));
+  readStatus.addEventListener('click', () => readstatus(myLibrary.indexOf(newBook), showBooks, bookCard));
+  div.className = 'card';
+  return div;
+};
+
 // event: add a book
 document.querySelector("#book-form").addEventListener("submit", (event) => {
   event.preventDefault();
