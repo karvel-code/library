@@ -8,6 +8,14 @@ This project entails building a simple libary where a user can create a new book
 - ` $ git clone https://github.com/karvel-code/library.git`
 - ` $ cd library`
 
+## Setup
+
+```run `npm install` to install all required node modules
+
+## Usage
+
+double click on `index.html` to open project in new browser window`
+
 ## Author
 
 👤 **Elvis Githinji**
